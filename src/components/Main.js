@@ -4,10 +4,10 @@ import StockChart from './StockChart';
 
 import './css/Main.css';
 
-const Main = ({ ticker }) => (
+const Main = ({ ticker, data }) => (
   <div className="main">
     <h2>Main</h2>
-    <StockChart ticker={ticker} />
+    <StockChart ticker={ticker} data = {data}/>
   </div>
 );
 

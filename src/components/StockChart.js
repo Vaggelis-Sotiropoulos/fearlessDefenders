@@ -36,9 +36,11 @@ class StockChart extends Component {
         result = JSON.parse(result);
         const labels = [];
         const quandlData = [];
+        const watsData = [];
         for (let i = 0; i < 5; i++) {
           labels.unshift(result.dataset.data[i][0]);
           quandlData.unshift(result.dataset.data[i][4]);
+          watsData.unshift((this.props.data[i].score * 100));
         }
         const ctx = document.getElementById('stock-chart');
 
@@ -60,7 +62,8 @@ class StockChart extends Component {
               {
                 type: 'bar',
                 label: 'Watson Score',
-                data: [20, -20, -10, 50, 60],
+                yAxisID: "y-axis-0",
+                data: watsData,
                 backgroundColor: [
                   'rgba(0, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -82,6 +85,7 @@ class StockChart extends Component {
               {
               type: 'line',
               label: 'Stock Price',
+              yAxisID:"y-axis-1",
               data: quandlData,
               // backgroundColor: [
               //   'rgba(255, 99, 132, 0.2)',
@@ -107,10 +111,17 @@ class StockChart extends Component {
             // hover: {mode: null},
             scales: {
               yAxes: [{
-                ticks: {
-                  beginAtZero: false,
-                },
-              }],
+                position: "left",
+                "id": "y-axis-0"
+                }, {
+                position: "right",
+                "id": "y-axis-1"
+              }]
+              // yAxes: [{
+              //   ticks: {
+              //     beginAtZero: false,
+              //   },
+              // }],
             },
           }
         })

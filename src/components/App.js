@@ -14,7 +14,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: {},
-      ticker: 'AAPL',
+      ticker: 'TWTR',
       companiesSummary: [],
     };
 
@@ -54,6 +54,10 @@ class App extends React.Component {
     this.fetchCompaniesSummary('AAPL');  // Initialize with a value
   }
 
+  componentDidMount() {
+    this.fetchData(this.state.ticker);
+  }
+
   render() {
     return (
       <div className="site-wrap">
@@ -65,7 +69,7 @@ class App extends React.Component {
         </div>
         <div className="content">
           <Sidebar />
-          <Main ticker={this.state.ticker} />
+          <Main ticker={this.state.ticker} data={this.state.data}/>
           <Tweets companiesSummary={this.state.companiesSummary} />
         </div>
       </div>
