@@ -33,7 +33,8 @@ class StockChart extends Component {
       type: 'GET',
       url: `/api/quandl/${ticker}`,
       success: (result) => {
-        if (this.props.data.length !== 0) {
+        console.log('propsNum: ', this.props.data.length);
+        if (this.props.data.length !== undefined) {
           result = JSON.parse(result);
           const labels = [];
           const quandlData = [];
@@ -125,78 +126,9 @@ class StockChart extends Component {
               },
             }
           });
-        // get new data
-        // this.setState({myChart: new ChartJS(ctx, {
-        //   type: 'bar',
-        //   data: {
-        //     labels: labels,
-        //     datasets: [
-        //       {
-        //         type: 'bar',
-        //         label: 'Watson Score',
-        //         yAxisID: "y-axis-0",
-        //         data: watsData,
-        //         backgroundColor: [
-        //           'rgba(0, 99, 132, 0.2)',
-        //           'rgba(54, 162, 235, 0.2)',
-        //           'rgba(255, 206, 86, 0.2)',
-        //           'rgba(75, 192, 192, 0.2)',
-        //           'rgba(153, 102, 255, 0.2)',
-        //           'rgba(255, 159, 64, 0.2)',
-        //         ],
-        //         borderColor: [
-        //           'rgba(0, 0, 0, 1)',
-        //           'rgba(50, 50, 50, 1)',
-        //           'rgba(255, 206, 86, 1)',
-        //           'rgba(75, 192, 192, 1)',
-        //           'rgba(153, 102, 255, 1)',
-        //           'rgba(255, 159, 64, 1)',
-        //         ],
-        //         borderWidth: 1,
-        //       },
-        //       {
-        //       type: 'line',
-        //       label: 'Stock Price',
-        //       yAxisID:"y-axis-1",
-        //       data: quandlData,
-        //       // backgroundColor: [
-        //       //   'rgba(255, 99, 132, 0.2)',
-        //       //   'rgba(54, 162, 235, 0.2)',
-        //       //   'rgba(255, 206, 86, 0.2)',
-        //       //   'rgba(75, 192, 192, 0.2)',
-        //       //   'rgba(153, 102, 255, 0.2)',
-        //       //   'rgba(255, 159, 64, 0.2)',
-        //       // ],
-        //       borderColor: [
-        //         'rgba(255, 99, 132, 1)',
-        //         'rgba(54, 162, 235, 1)',
-        //         'rgba(255, 206, 86, 1)',
-        //         'rgba(75, 192, 192, 1)',
-        //         'rgba(153, 102, 255, 1)',
-        //         'rgba(255, 159, 64, 1)',
-        //       ],
-        //       borderWidth: 1,
-        //     }],
-        //   },
-        //   options: {
-        //     // tooltips: {enabled: false},
-        //     // hover: {mode: null},
-        //     scales: {
-        //       yAxes: [{
-        //         position: "left",
-        //         "id": "y-axis-0"
-        //         }, {
-        //         position: "right",
-        //         "id": "y-axis-1"
-        //       }]
-        //       // yAxes: [{
-        //       //   ticks: {
-        //       //     beginAtZero: false,
-        //       //   },
-        //       // }],
-        //     },
-        //   }
-        // })
+        }
+        else {
+          console.log('not enough');
         }
       },
       error: (error) => {
