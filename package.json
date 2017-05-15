@@ -11,7 +11,7 @@
     "start": "webpack-dev-server -w",
     "server:dev": "nodemon server/server.js",
     "server": "node server/server.js",
-    "test": "jest -w"
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -22,6 +22,7 @@
     "cors": "^2.8.3",
     "express": "^4.15.2",
     "jquery": "^3.2.1",
+    "mocha": "^3.3.0",
     "mongoose": "^4.9.8",
     "path": "^0.12.7",
     "prop-types": "^15.5.8",

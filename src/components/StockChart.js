@@ -125,7 +125,6 @@ class StockChart extends Component {
   render() {
     return (
       <div className="chart-container">
-
         { (this.props.ticker === 'none' ) ? <h2> Enter a stock to begin </h2> : 
         <h2>{this.props.ticker} Stock Price</h2> }
         <canvas className="center" height="300px" id="stock-chart" />
