@@ -42,13 +42,13 @@ class StockChart extends Component {
           var j = 0;
           console.log('wats data: ', this.props.data);
           for (var i = 0; i < 5; i++) {
-            labels.unshift(result.dataset.data[i][0]);
-            quandlData.unshift(result.dataset.data[i][4]);
+            labels.unshift(json.dataset.data[i][0]);
+            quandlData.unshift(json.dataset.data[i][4]);
             console.log('j: ', j);
-            while(this.props.data[j].date !== result.dataset.data[i][0]) {
+            while(this.props.data[j].date !== json.dataset.data[i][0]) {
               j += 1;
               console.log('wats date: ', this.props.data[j].date);
-              console.log('quandl date: ', result.dataset.data[i][0]);
+              console.log('quandl date: ', json.dataset.data[i][0]);
             }
             watsData.unshift((this.props.data[j].score * 100));
             j += 1;
